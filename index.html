@@ -14,8 +14,10 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💙</text></svg>" />
 
-    <!-- Preload the couple photo so overlay opens instantly -->
-    <link rel="preload" href="US.jpg" as="image" />
+    <!-- Social sharing preview -->
+    <meta property="og:title" content="For My Reem 💙" />
+    <meta property="og:description" content="A love letter for Khalil & Reem" />
+    <meta property="og:image" content="US.jpg" />
 
     <!-- Font Awesome (local) -->
     <link href="css/all.min.css" type="text/css" rel="stylesheet" />
@@ -121,9 +123,6 @@
     </div>
 
     <script type="text/javascript">
-      // Centralized image path (4.2)
-      const COUPLE_IMAGE = "US.jpg";
-
       // Relationship start date
       const together = new Date(2025, 9, 3, 16, 30, 0, 0);
 
@@ -219,22 +218,24 @@
         setInterval(spawnHeart, 2500);
       })();
 
-      // --- Start animations ---
-      if (document.createElement("canvas").getContext) {
-        startHeartAnimation();
+      // --- Start animations (inside DOM-ready so garden is initialized) ---
+      $(function () {
+        if (document.createElement("canvas").getContext) {
+          startHeartAnimation();
 
-        timeElapse(together);
-        setInterval(function () {
           timeElapse(together);
-        }, 500);
-      } else {
-        const msg = document.createElement("div");
-        msg.id = "errorMsg";
-        msg.innerHTML =
-          "Your browser doesn't support HTML5!<br/>Please use a modern browser.";
-        document.body.appendChild(msg);
-        document.getElementById("poem").style.display = "none";
-      }
+          setInterval(function () {
+            timeElapse(together);
+          }, 500);
+        } else {
+          const msg = document.createElement("div");
+          msg.id = "errorMsg";
+          msg.innerHTML =
+            "Your browser doesn't support HTML5!<br/>Please use a modern browser.";
+          document.body.appendChild(msg);
+          document.getElementById("poem").style.display = "none";
+        }
+      });
     </script>
   </body>
 </html>

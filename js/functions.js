@@ -100,7 +100,6 @@ function timeElapse(date) {
 }
 
 function showMessages() {
-  $('#words').css("position", "absolute");
   $('#messages').fadeIn(1500);
   $('#loveu').fadeIn(1500);
 }
