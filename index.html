@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A love letter for Khalil & Reem — celebrating our journey together."
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title>For My Reem 💙</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💙</text></svg>" />
+
+    <!-- Preload the couple photo so overlay opens instantly -->
+    <link rel="preload" href="US.jpg" as="image" />
+
+    <!-- Font Awesome (local) -->
+    <link href="css/all.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link href="css/default.css" type="text/css" rel="stylesheet" />
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+  </head>
+
+  <body>
+    <div id="mainDiv">
+      <div id="content">
+
+        <!-- Heart section — appears FIRST -->
+        <div id="loveHeart">
+          <canvas id="garden"></canvas>
+          <div id="words">
+            <div id="messages">
+              <h1 id="foreverTitle">Khalil & Reem FOREVER</h1>
+              <div id="elapseClock"></div>
+            </div>
+            <div id="loveu">
+              I LOVE YOU SO MUCH<br />
+              <div class="signature">— Khalil ❤️</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Love Letter — appears BELOW the heart -->
+        <div id="poem">
+          <div class="poem-line">Hey Reem,</div>
+          <div class="poem-line">Do you remember the day we first met?</div>
+          <div class="poem-line poem-soft">Under skies of baby blue…</div>
+          <div class="poem-line">Since that day a spark begun;</div>
+          <div class="poem-line poem-soft">
+            Your smile. Your warmth. Your heart.
+          </div>
+          <div class="poem-line">
+            Your everything got imprinted in my soul;
+          </div>
+          <div class="poem-line">As the time went on,</div>
+          <div class="poem-line">the bond grew stronger and stronger;</div>
+          <div class="poem-line">Journey from infatuation to love —</div>
+          <div class="poem-line">we have traveled a long way together.</div>
+          <div class="poem-line">There have been fights,</div>
+          <div class="poem-line poem-soft">
+            and I'm sure there will be more.
+          </div>
+          <div class="poem-line">
+            But our bond will always grow back stronger.
+          </div>
+          <div class="poem-line poem-spacer"></div>
+          <div class="poem-line poem-highlight">All I want to say is:</div>
+          <div class="poem-line poem-highlight">
+            Baby, I will love you forever 💗
+          </div>
+          <div class="poem-line poem-spacer"></div>
+          <div class="poem-line">
+            Now if you want to hug me, touch the heart below
+          </div>
+          <div class="poem-line">
+            <span id="heartspan">
+              <a id="heartLink" href="#" role="button" aria-label="View our photo"
+                ><i class="fas fa-heart" id="icon"></i
+              ></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Image overlay for heart click -->
+    <div id="imageOverlay" class="image-overlay" role="dialog" aria-label="Our photo">
+      <div class="couple-image-container overlay-container">
+        <img
+          src="US.jpg"
+          alt="Khalil and Reem"
+          class="couple-image"
+          id="couplePhoto"
+          loading="lazy"
+        />
+        <button
+          id="closeOverlay"
+          class="close-overlay-btn"
+          aria-label="Close photo"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      // Centralized image path (4.2)
+      const COUPLE_IMAGE = "US.jpg";
+
+      // Relationship start date
+      const together = new Date(2025, 9, 3, 16, 30, 0, 0);
+
+      // --- Image overlay logic ---
+      (function () {
+        const heartLink = document.getElementById("heartLink");
+        const overlay = document.getElementById("imageOverlay");
+        const closeBtn = document.getElementById("closeOverlay");
+
+        function openOverlay(e) {
+          e.preventDefault();
+          overlay.classList.add("visible");
+        }
+
+        function closeOverlay() {
+          overlay.classList.remove("visible");
+        }
+
+        if (heartLink) {
+          heartLink.addEventListener("click", openOverlay);
+        }
+        if (closeBtn) {
+          closeBtn.addEventListener("click", closeOverlay);
+        }
+        if (overlay) {
+          overlay.addEventListener("click", function (e) {
+            if (e.target === overlay) closeOverlay();
+          });
+        }
+
+        // Escape key to close overlay (5.3)
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && overlay.classList.contains("visible")) {
+            closeOverlay();
+          }
+        });
+      })();
+
+      // --- Poem fade-in with IntersectionObserver (5.5) ---
+      (function () {
+        const lines = document.querySelectorAll(".poem-line");
+
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+          );
+
+          lines.forEach(function (line, i) {
+            // Stagger the transition-delay so they don't all pop in at once
+            line.style.transitionDelay = (i * 0.12) + "s";
+            observer.observe(line);
+          });
+        } else {
+          // Fallback for very old browsers — just show them all
+          lines.forEach(function (line) {
+            line.classList.add("visible");
+          });
+        }
+      })();
+
+      // --- Floating hearts animation ---
+      (function () {
+        const heartSymbols = ["♥", "💙", "💗", "💕"];
+        const maxHearts = 8;
+        let heartCount = 0;
+
+        function spawnHeart() {
+          if (heartCount >= maxHearts) return;
+          heartCount++;
+          const el = document.createElement("span");
+          el.className = "floating-heart";
+          el.textContent =
+            heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+          el.style.left = Math.random() * 90 + 5 + "%";
+          el.style.fontSize = Math.random() * 1.2 + 0.8 + "rem";
+          el.style.animationDuration = Math.random() * 3 + 4 + "s";
+          el.style.opacity = "1";
+          document.body.appendChild(el);
+          el.addEventListener("animationend", function () {
+            el.remove();
+            heartCount--;
+          });
+        }
+
+        setInterval(spawnHeart, 2500);
+      })();
+
+      // --- Start animations ---
+      if (document.createElement("canvas").getContext) {
+        startHeartAnimation();
+
+        timeElapse(together);
+        setInterval(function () {
+          timeElapse(together);
+        }, 500);
+      } else {
+        const msg = document.createElement("div");
+        msg.id = "errorMsg";
+        msg.innerHTML =
+          "Your browser doesn't support HTML5!<br/>Please use a modern browser.";
+        document.body.appendChild(msg);
+        document.getElementById("poem").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
