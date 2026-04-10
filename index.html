@@ -9,14 +9,20 @@
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
-    <title>For My Reem 💙</title>
+    <title>For My Gazelle 💙</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💙</text></svg>" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦌</text></svg>"
+    />
 
     <!-- Social sharing preview -->
-    <meta property="og:title" content="For My Reem 💙" />
-    <meta property="og:description" content="A love letter for Khalil & Reem" />
+    <meta property="og:title" content="For My Gazelle 💙" />
+    <meta
+      property="og:description"
+      content="A love letter for Khalil & Reem — my beautiful gazelle"
+    />
     <meta property="og:image" content="US.jpg" />
 
     <!-- Font Awesome (local) -->
@@ -42,7 +48,6 @@
   <body>
     <div id="mainDiv">
       <div id="content">
-
         <!-- Heart section — appears FIRST -->
         <div id="loveHeart">
           <canvas id="garden"></canvas>
@@ -53,6 +58,7 @@
             </div>
             <div id="loveu">
               I LOVE YOU SO MUCH<br />
+              <div class="signature">my beautiful gazelle 🦌</div>
               <div class="signature">— Khalil ❤️</div>
             </div>
           </div>
@@ -61,49 +67,64 @@
         <!-- Love Letter — appears BELOW the heart -->
         <div id="poem">
           <div class="poem-line">Hey Reem,</div>
-          <div class="poem-line">Do you remember the day we first met?</div>
-          <div class="poem-line poem-soft">Under skies of baby blue…</div>
-          <div class="poem-line">Since that day a spark begun;</div>
           <div class="poem-line poem-soft">
-            Your smile. Your warmth. Your heart.
-          </div>
-          <div class="poem-line">
-            Your everything got imprinted in my soul;
-          </div>
-          <div class="poem-line">As the time went on,</div>
-          <div class="poem-line">the bond grew stronger and stronger;</div>
-          <div class="poem-line">Journey from infatuation to love —</div>
-          <div class="poem-line">we have traveled a long way together.</div>
-          <div class="poem-line">There have been fights,</div>
-          <div class="poem-line poem-soft">
-            and I'm sure there will be more.
-          </div>
-          <div class="poem-line">
-            But our bond will always grow back stronger.
+            my little sweetheart, light of my eyes…
           </div>
           <div class="poem-line poem-spacer"></div>
-          <div class="poem-line poem-highlight">All I want to say is:</div>
+          <div class="poem-line">Do you remember the day we first met?</div>
+          <div class="poem-line poem-soft">Under skies of baby blue…</div>
+          <div class="poem-line">Since that day, something changed in me;</div>
+          <div class="poem-line poem-soft">
+            Your smile. Your warmth. Your tender heart.
+          </div>
+          <div class="poem-line">You got imprinted in my soul.</div>
+          <div class="poem-line poem-spacer"></div>
+          <div class="poem-line">You know me better than I know myself;</div>
+          <div class="poem-line">you stand by me through thick and thin,</div>
+          <div class="poem-line poem-soft">
+            giving me strength I never knew I had.
+          </div>
+          <div class="poem-line">You gave my life flavor and meaning,</div>
+          <div class="poem-line">and every day I think about</div>
+          <div class="poem-line">how to give you back even a fraction</div>
+          <div class="poem-line poem-soft">of what you give me.</div>
+          <div class="poem-line poem-spacer"></div>
+          <div class="poem-line poem-soft">You're my gazelle 🦌</div>
+          <div class="poem-line poem-soft">graceful, beautiful, and free —</div>
+          <div class="poem-line">but you chose to run beside me.</div>
+          <div class="poem-line poem-spacer"></div>
+          <div class="poem-line">May all the years of my life be yours,</div>
+          <div class="poem-line poem-soft">
+            and may I never miss a single moment with you.
+          </div>
+          <div class="poem-line poem-spacer"></div>
           <div class="poem-line poem-highlight">
             Baby, I will love you forever 💗
           </div>
           <div class="poem-line poem-spacer"></div>
-          <div class="poem-line">
-            Now if you want to hug me, touch the heart below
-          </div>
+          <div class="poem-line">Hey! touch the heart below 👇🏼</div>
           <div class="poem-line">
             <span id="heartspan">
-              <a id="heartLink" href="#" role="button" aria-label="View our photo"
+              <a
+                id="heartLink"
+                href="#"
+                role="button"
+                aria-label="View our photo"
                 ><i class="fas fa-heart" id="icon"></i
               ></a>
             </span>
           </div>
         </div>
-
       </div>
     </div>
 
     <!-- Image overlay for heart click -->
-    <div id="imageOverlay" class="image-overlay" role="dialog" aria-label="Our photo">
+    <div
+      id="imageOverlay"
+      class="image-overlay"
+      role="dialog"
+      aria-label="Our photo"
+    >
       <div class="couple-image-container overlay-container">
         <img
           src="US.jpg"
@@ -175,12 +196,12 @@
                 }
               });
             },
-            { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+            { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
           );
 
           lines.forEach(function (line, i) {
             // Stagger the transition-delay so they don't all pop in at once
-            line.style.transitionDelay = (i * 0.12) + "s";
+            line.style.transitionDelay = i * 0.12 + "s";
             observer.observe(line);
           });
         } else {
@@ -193,7 +214,7 @@
 
       // --- Floating hearts animation ---
       (function () {
-        const heartSymbols = ["♥", "💙", "💗", "💕"];
+        const heartSymbols = ["♥", "💙", "💗", "💕", "🦌", "🦌"];
         const maxHearts = 8;
         let heartCount = 0;
 
